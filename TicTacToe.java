@@ -22,15 +22,31 @@ public class TicTacToe {
         return true;
     }
 
+    // UC6: Place move on board
+    public static void placeMove(int row, int col, char symbol) {
+
+        if (isValidMove(row, col)) {
+            board[row][col] = symbol;   // update board
+            System.out.println("Move placed");
+        } else {
+            System.out.println("Invalid move");
+        }
+    }
+
     public static void main(String[] args) {
 
         int row = 1;
         int col = 1;
+        char player = 'X';
 
-        if (isValidMove(row, col)) {
-            System.out.println("Valid move");
-        } else {
-            System.out.println("Invalid move");
+        placeMove(row, col, player);
+
+        // Display board after move
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
         }
     }
 }
