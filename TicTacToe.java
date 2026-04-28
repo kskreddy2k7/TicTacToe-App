@@ -1,36 +1,51 @@
 public class TicTacToe {
 
-    static char[][] board = {
-        {'-', '-', '-'},
-        {'-', '-', '-'},
-        {'-', '-', '-'}
-    };
-
-    // UC5: Validate move
-    public static boolean isValidMove(int row, int col) {
-
-        // Check bounds
-        if (row < 0 || row > 2 || col < 0 || col > 2) {
-            return false;
-        }
-
-        // Check if cell is empty
-        if (board[row][col] != '-') {
-            return false;
-        }
-
-        return true;
-    }
+    static char[][] board = new char[3][3];
 
     public static void main(String[] args) {
 
-        int row = 1;
-        int col = 1;
+        // Sample test data (you can change)
+        board[0][0] = 'X';
+        board[0][1] = 'X';
+        board[0][2] = 'X';
 
-        if (isValidMove(row, col)) {
-            System.out.println("Valid move");
-        } else {
-            System.out.println("Invalid move");
+        System.out.println(hasWon('X'));
+    }
+
+    // UC9: Check winning condition
+    static boolean hasWon(char symbol) {
+
+        // Check rows
+        for (int i = 0; i < 3; i++) {
+            if (board[i][0] == symbol &&
+                board[i][1] == symbol &&
+                board[i][2] == symbol) {
+                return true;
+            }
         }
+
+        // Check columns
+        for (int i = 0; i < 3; i++) {
+            if (board[0][i] == symbol &&
+                board[1][i] == symbol &&
+                board[2][i] == symbol) {
+                return true;
+            }
+        }
+
+        // Check diagonals
+        if (board[0][0] == symbol &&
+            board[1][1] == symbol &&
+            board[2][2] == symbol) {
+            return true;
+        }
+
+        if (board[0][2] == symbol &&
+            board[1][1] == symbol &&
+            board[2][0] == symbol) {
+            return true;
+        }
+
+        return false;
     }
 }
