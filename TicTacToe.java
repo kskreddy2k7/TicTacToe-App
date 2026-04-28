@@ -1,36 +1,57 @@
 public class TicTacToe {
 
     static char[][] board = {
-        {'-', '-', '-'},
-        {'-', '-', '-'},
-        {'-', '-', '-'}
+        {'X', 'O', 'X'},
+        {'O', 'X', 'O'},
+        {'O', 'X', 'O'}
     };
 
-    // UC5: Validate move
-    public static boolean isValidMove(int row, int col) {
-
-        // Check bounds
-        if (row < 0 || row > 2 || col < 0 || col > 2) {
-            return false;
-        }
-
-        // Check if cell is empty
-        if (board[row][col] != '-') {
-            return false;
-        }
-
-        return true;
+    public static void main(String[] args) {
+        System.out.println(isDraw());
     }
 
-    public static void main(String[] args) {
+    // UC10: Check draw condition
+    static boolean isDraw() {
 
-        int row = 1;
-        int col = 1;
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
 
-        if (isValidMove(row, col)) {
-            System.out.println("Valid move");
-        } else {
-            System.out.println("Invalid move");
+                // If any empty cell exists → not draw
+                if (board[r][c] == '-') {
+                    return false;
+                }
+            }
         }
+
+        // No empty cells → draw
+        return true;
+    }
+}public class TicTacToe {
+
+    static char[][] board = {
+        {'X', 'O', 'X'},
+        {'O', 'X', 'O'},
+        {'O', 'X', 'O'}
+    };
+
+    public static void main(String[] args) {
+        System.out.println(isDraw());
+    }
+
+    // UC10: Check draw condition
+    static boolean isDraw() {
+
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
+
+                // If any empty cell exists → not draw
+                if (board[r][c] == '-') {
+                    return false;
+                }
+            }
+        }
+
+        // No empty cells → draw
+        return true;
     }
 }
